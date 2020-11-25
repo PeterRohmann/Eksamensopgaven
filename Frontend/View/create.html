@@ -1,0 +1,41 @@
+ 
+<!-- npm i express ejs-->
+<!-- npm i --save-dev dotenv-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CreateUser</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="login-page">
+        <div class="form">
+
+    <table class="register-form">
+        <label for="create">Create a user</label><br>
+        <br>
+        <input type="text" id="usernameid" placeholder="Username"/>
+        <input type="password" id="passwordid" placeholder="Password"/>
+        <input type="text" id="firstnameid" placeholder="Firstname"/>
+        <input type="text" id="lastnameid" placeholder="Lastname"/>
+        <input type="number" id="ageid" placeholder="Age"/>
+        <input type="text" id="genderid" placeholder="Gender"/>
+        <input type="text" id="interestid" placeholder="Interest"/>
+        <input type="submit" id="submituser" value="Submit" onclick= "validate()"/> 
+        <!--<input type="submit" value="Login" class="btn" onClick="login()" /></td> -->
+       <!-- <button>Create User </button>  --> 
+       <!--Når jeg har fået det andet til at virke kan jeg se om jeg kan få onclick ind på button så css kommer med. -->
+            <a href="login.html">Or Log In Here</a>
+        </p>
+    </table>  
+
+</div>
+</div>
+    <div id=message></div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../Controller/js.js"></script>
+</html>

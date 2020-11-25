@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <h1>
+        Vores hjemmeside
+    </h1>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>  
+
+    <table>
+        <button id="submituser" onclick= "deleteuser()">Delete Your User</button>
+        <button id="logoutuser" onclick= "logout()">Log Out</button>
+        <button id="getuser" onclick= "getuser()">Se overblik over din profil</button>
+    </table>
+    
+    <p id="overview"></p>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../Controller/profile.js"></script>
+</html>
