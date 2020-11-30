@@ -10,13 +10,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 const userRoute = require('../View/users.js');
+const userRouteMatch = require('../View/matchroute.js');
 
 app.get('/', (req, res) => {
     res.send('welcome to the development api-server');
 });
 
 app.use("/users", userRoute)
-
+app.use("/users", userRouteMatch)
 
 
 app.listen(PORT, () => {

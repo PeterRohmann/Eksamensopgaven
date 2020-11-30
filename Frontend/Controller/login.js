@@ -19,8 +19,11 @@ function loginValidate() {
                     localStorage.setItem('loggedIn', response.data.id);
                     localStorage.setItem('username', username2.value);
                     localStorage.setItem('password', password2.value);
+                    console.log(response.data.id);
                 
                     
                 })
                 .then(() => window.location = "profile.html");
 }
+
+

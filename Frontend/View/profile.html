@@ -14,13 +14,45 @@
 
     <table>
         <button id="submituser" onclick= "deleteuser()">Delete Your User</button>
-        <button id="logoutuser" onclick= "logout()">Log Out</button>
-        <button id="getuser" onclick= "getuser()">Se overblik over din profil</button>
+        <br><br><button id="logoutuser" onclick= "logout()">Log Out</button>
+        <br><br><button onclick= "getFullProfile()">Se overblik over din profil</button>
+        <br><br><button onclick="location.href = 'update.html';">Update profile</button>
+        <br><br><button onclick= "Like()">Like</button>
+        <br><br><button id="dislike" onclick= >Dislike</button>
+        <br><br><button onclick= "Swipe()">Swipe! Find kærligheden i dag :-)</button>
+        <button onclick= "getFullProfileSwipe()"> Se fuld profil</button>
+        <br><br><button onclick= "showmatches()">Vis mine matches</button>
+        
+
+        
+
     </table>
     
+    <p id="nomoreusers"></p>
     <p id="overview"></p>
+    <p id="displayUsername"></p>
+    <p id="displayInterest"></p>
+    <p id="displayFirstname"></p>
+    <p id="displayLastname"></p>
+    <p id="displayAge"></p>
+    <p id="displayGender"></p>
+    <p id="like"></p>
+   
+    <table id="myTableData"  border="1" cellpadding="2">
+        <tr>
+            <td>&nbsp;</td>
+            <td><b>Name</b></td>
+            <td><b>Age</b></td>
+        </tr>
+    </table>
+    &nbsp;
+     
+    </div>
+
+
     
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../Controller/profile.js"></script>
+    
 </html>

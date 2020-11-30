@@ -8,6 +8,8 @@ const router = express.Router()
 
 
 const dataPath = '../Model/users.json';
+const likePath = '../Model/likes.json';
+
 
 //Create
 router.post('/', (req, res) => {
@@ -27,19 +29,24 @@ router.post('/', (req, res) => {
     })
       
 });
+// til likefunktionen
 
-// Vise fuldt overblik over profil. 
+router.post('/like', (req, res) => {
+    fs.readFile(likePath, "utf8", (err, data) => {
+    let parsedData = JSON.parse(data)
+    parsedData.push(req.body)
+    
+    fs.writeFile(likePath, JSON.stringify(parsedData),(e) => {
+        
+        res.status(200).send(JSON.stringify(parsedData));
+    });
+    })      
+});
 
-// Fra GO3
-/*
-export const getUser = (req,res) => {
-    const {id} = req.params; 
 
-    const foundUser = users.find((user) => user.id == id);
 
-    res.send(foundUser);
-}
-*/
+
+
 //Vise fuldt overblik
 router.get('/:id', (req, res) => {
     fs.readFile(dataPath, "utf8", (err, data) => {
@@ -49,6 +56,9 @@ router.get('/:id', (req, res) => {
         res.send(parsedData[userId]);
     });
 }); 
+
+
+
 // Delete 
 router.delete('/:id', (req, res) => {
     fs.readFile(dataPath, "utf8", (err, data) => {
@@ -56,15 +66,31 @@ router.delete('/:id', (req, res) => {
         let parsedData = JSON.parse(data)
         const userId = req.params["id"];
         delete parsedData[userId];
+        parsedData = parsedData.filter(function(x) {return x !== null});
         fs.writeFile(dataPath, JSON.stringify(parsedData), () => {
             res.status(200).send(`users id:${userId} removed`);
         });
     },
     true);
-
     //Måske lave et if statement. Hvis der står "null" i array'et så bliver det automatisk fjernet. Eller det vil måske ikke virke(hvad med kommaet??)
     //Det skal ikke laves her, men inde i login funktionen, hvor den kigger efter username. Hvis der står "null,", så spring over?.
     // Det har intet med det den her funktion at gøre. Lav et for-loop i loginfunktionen, der tager højde for "null,", og så skal den .pop(). 
+});
+
+//deletelike
+router.delete('/deletelike', (req, res) => {
+    fs.readFile(likePath, "utf8", (err, data) => {
+        // add the new user
+        let parsedData = JSON.parse(data)
+        const userId = req.params["id"];
+        delete parsedData[userId];
+        fs.writeFile(likePath, JSON.stringify(parsedData), () => {
+            res.status(200).send(JSON.stringify(parsedData));
+        });
+    },
+    true);
+
+    
 });
 
 //login
@@ -104,9 +130,23 @@ router.post('/logout', (req, res) => {
     true);
 });    
 
+//Opdater
+router.patch('/:id', (req, res) => {
+    fs.readFile(dataPath, "utf8", (err, data) => {
+        // add the new user
+        let parsedData = JSON.parse(data)
+        const userId = req.params["id"];
+        parsedData[userId] = req.body;
+        fs.writeFile(dataPath, JSON.stringify(parsedData), () => {
+            res.status(200).send(`users id:${userId} updated`);
+        });
+    },
+    true);
+});
+
+
+
 module.exports = router;
-
-
     /*
     // helper methods
     const readFile = (callback, returnJson = false, filePath = dataPath, encoding = 'utf8') => {
@@ -163,26 +203,12 @@ module.exports = router;
     },
         true);
     });
+*/
 
 
 
-
-    // UPDATE
-    app.put('/users/:id', (req, res) => {
-
-        readFile(data => {
-
-            // add the new user
-            const userId = req.params["id"];
-            data[userId] = req.body;
-
-            writeFile(JSON.stringify(data, null, 2), () => {
-                res.status(200).send(`users id:${userId} updated`);
-            });
-        },
-            true);
-    });
-
+ 
+/*
 
     // DELETE
     app.delete('/users/:id', (req, res) => {
@@ -199,13 +225,13 @@ module.exports = router;
         },
             true);
     });
-*/
 
 
-    /*
+
+    
     
 
-        */
+        
 
     //her bestemmes om brugeren logges ind eller ej
 
@@ -213,7 +239,7 @@ module.exports = router;
 
 
   // LoginValidation
-  /*
+  
   const fs = require('fs');
 const dataPath = '../data/users.json';
 
@@ -225,6 +251,8 @@ const dataPath = '../data/users.json';
         console.log(JSON.parse(data));
     });
 */
+
+
 
 
 
