@@ -1,25 +1,19 @@
-
-//Lav eventlistener. 
-
-let username2 = document.getElementById("usernameid2");
-let password2 = document.getElementById("passwordid2");
+let username = document.getElementById("usernameidlogin");
+let password = document.getElementById("passwordidlogin");
 
 
-//her skal bruges getElementById til at få fat i bruger input
-function loginValidate() {
+function loginValidation() {
     let logindata = {
-        username2 : username2.value,
-        password2 : password2.value 
+        username : username.value,
+        password : password.value 
     }
 
-//Man kan i chrome se navnet ved at skrive localStorage.getItem("name") i loggen i browseren. 
+
     axios.post("http://localhost:5000/users/login", logindata)
-                .then(function(response){
-                    console.log(response);
-                    localStorage.setItem('loggedIn', response.data.id);
-                    localStorage.setItem('username', username2.value);
-                    localStorage.setItem('password', password2.value);
-                    console.log(response.data.id);
+                .then(function(res){
+                    localStorage.setItem('loggedIn', res.data.id);
+                    
+                    console.log(res.data.id);
                 
                     
                 })

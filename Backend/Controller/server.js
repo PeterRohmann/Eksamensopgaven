@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const fs = require('fs');
 const PORT = 5000
 const cors = require("cors");
 
@@ -9,17 +8,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-const userRoute = require('../View/users.js');
-const userRouteMatch = require('../View/matchroute.js');
+const routes = require('../Routes/routes.js');
 
-app.get('/', (req, res) => {
-    res.send('welcome to the development api-server');
+app.use("/users", routes)
+
+var server = app.listen(PORT, () => {
+    console.log(`Server running at port: http://localhost:${PORT}`);
 });
 
-app.use("/users", userRoute)
-app.use("/users", userRouteMatch)
-
-
-app.listen(PORT, () => {
-    console.log(`Se min server på port: http://localhost:${PORT}`);
-});
+module.exports = server;

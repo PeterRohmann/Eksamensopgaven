@@ -3,28 +3,24 @@
 <head>
 
     <h1>
-        Vores hjemmeside
+        Welcome to this amazing dating app
     </h1>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
 </head>
 <body>  
 
     <table>
-        <button id="submituser" onclick= "deleteuser()">Delete Your User</button>
-        <br><br><button id="logoutuser" onclick= "logout()">Log Out</button>
-        <br><br><button onclick= "getFullProfile()">Se overblik over din profil</button>
+        <button id="submituser" onclick= "deleteProfile()">Delete your profile</button>
+        <br><br><button id="logoutuser" onclick= "logOut()">Log Out</button>
+        <br><br><button onclick= "seeOwnProfile()">Show your profile</button>
         <br><br><button onclick="location.href = 'update.html';">Update profile</button>
-        <br><br><button onclick= "Like()">Like</button>
-        <br><br><button id="dislike" onclick= >Dislike</button>
-        <br><br><button onclick= "Swipe()">Swipe! Find kærligheden i dag :-)</button>
-        <button onclick= "getFullProfileSwipe()"> Se fuld profil</button>
-        <br><br><button onclick= "showmatches()">Vis mine matches</button>
-        
-
-        
+        <br><br><br><br><br><br><button onclick= "like()">Like</button>
+        <br><br><button onclick= "showNextProfile()">Display next profile (find love!)</button>
+        <br><br><button onclick= "seeFullProfile()"> See full profile</button>
+        <br><br><button onclick= "displayMyMatches()">Display my matches</button>
 
     </table>
     
@@ -42,17 +38,16 @@
         <tr>
             <td>&nbsp;</td>
             <td><b>Name</b></td>
-            <td><b>Age</b></td>
+            <td><b>Interest</b></td>
         </tr>
     </table>
     &nbsp;
      
     </div>
-
-
     
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="../Controller/profile.js"></script>
     
 </html>

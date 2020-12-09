@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Log ind side</title>
-    <link rel="stylesheet" href="styles.css">
+    <title></title>
+    
 </head>
 <body>
+    <h1>Login here</h1>
     <div class="login-page">
     <div class="form">
 
         <table class="Login-form">
-        <input type="text" id="usernameid2" placeholder="Username"/>
-        <input type="password" id="passwordid2" placeholder="Password"/>
+        <input type="text" id="usernameidlogin" placeholder="Username"/>
+        <br><br><input type="password" id="passwordidlogin" placeholder="Password"/>
             
         </table>
-        <button id="submituser" onclick= "loginValidate()">Log ind</button>
-        <a href="create.html">Create a User</a>
+        <br><button id="submituser" onclick= "loginValidation()">Login</button>
+        <br><br><a href="create.html">New here? Create a User!</a>
 
         </div>
     </div>
     
-    <div id=message></div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="../Controller/login.js"></script>
